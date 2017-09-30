@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  express:
+    image: node:8.6.0-alpine
+    container_name: express_container
+    working_dir: /app
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app/
+    links:
+      - mongodb
+    command: npm start
+
+  mongodb:
+    image: mongo
+    container_name: mongo_container
+    ports:
+      - 27017:27017 
